@@ -63,10 +63,10 @@ export function UpgradeBanner({
     };
 
     return (
-        <div className={cn("mx-auto flex items-center justify-center", className)}>
+        <div className={cn("w-full flex items-center justify-center", className)}>
             <AnimatePresence>
                 <motion.div
-                    className="relative"
+                    className="relative w-full flex justify-center"
                     initial={{ opacity: 0, x: 30 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.4 }}
@@ -89,7 +89,7 @@ export function UpgradeBanner({
                     >
                         <SettingsFilled className="text-[#005FF2] dark:text-[#006EFE]" />
                     </motion.div>
-                    <div className="relative flex h-[35px] items-center gap-1 rounded-[6px] border border-[#CBE7FF] bg-[#F0F7FF] pl-2.5 pr-1 text-sm dark:border-[#003674] dark:bg-[#06193A]">
+                    <div className="relative flex h-[35px] w-full items-center justify-center gap-2 border-b border-[#CBE7FF] bg-[#F0F7FF] px-4 text-sm dark:border-white/10 dark:bg-black/95 dark:backdrop-blur-md">
                         <button
                             className="focus-visible:shadow-focus-ring rounded-xs my-[-1px] cursor-pointer border-none bg-transparent px-2 py-1 font-sans text-[13px] font-medium text-[#002359] underline decoration-[#CAE7FF] underline-offset-[5px] outline-none hover:text-[#005FF2] hover:decoration-[#94CCFF] focus-visible:!shadow-[#008FFF] dark:text-[#EAF5FF] dark:decoration-[#003674] dark:hover:text-[#44A7FF] dark:hover:decoration-[#00408A] relative overflow-hidden"
                             onMouseEnter={() => setIsHovered(true)}

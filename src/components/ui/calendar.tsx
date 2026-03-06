@@ -68,7 +68,7 @@ export function Calendar() {
                     <p className="mb-6 text-sm md:text-base text-gray-400">
                         Select a time that works best for you and secure your appointment with our master installers today.
                     </p>
-                    <Button className="rounded-2xl px-8 py-6 text-md bg-blue-600 hover:bg-blue-500 border border-blue-400/30 shadow-[0_0_20px_rgba(37,99,235,0.3)] transition-all">
+                    <Button className="rounded-2xl px-6 py-4 md:px-8 md:py-6 text-sm md:text-base bg-blue-600 hover:bg-blue-500 border border-blue-400/30 shadow-[0_0_20px_rgba(37,99,235,0.3)] transition-all">
                         Book Now
                     </Button>
                 </div>

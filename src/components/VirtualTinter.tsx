@@ -33,6 +33,7 @@ const VirtualTinter: React.FC = () => {
                         <img
                             src="/assets/virtual_car_side.png"
                             alt="Car Side View"
+                            loading="lazy"
                             style={{ width: '100%', height: 'auto', display: 'block' }}
                         />
 
@@ -71,7 +72,7 @@ const VirtualTinter: React.FC = () => {
                                 key={option.level}
                                 onClick={() => setTintLevel(option.level)}
                                 style={{
-                                    padding: '16px 32px',
+                                    padding: 'clamp(12px, 2vw, 16px) clamp(16px, 4vw, 32px)',
                                     borderRadius: '16px',
                                     background: tintLevel === option.level ? 'var(--accent-color)' : 'rgba(255,255,255,0.05)',
                                     color: '#fff',

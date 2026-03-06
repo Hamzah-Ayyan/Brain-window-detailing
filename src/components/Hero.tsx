@@ -114,81 +114,79 @@ const Hero: React.FC<HeroProps> = ({ setPage }) => {
                 }} />
             </div>
 
-            {/* === Layer 2: Main Content Grid === */}
-            <div className="container" style={{
-                position: 'relative',
-                zIndex: 2,
-                display: 'grid',
-                gridTemplateColumns: '1fr 1fr',
-                alignItems: 'center',
-                gap: '40px',
-                maxWidth: '1400px',
-                width: '100%',
-            }}>
+            {/* === Layer 2: Main Content (3D Overlap Composition) === */}
+            <div className="container relative z-10 flex flex-row items-center justify-center w-full max-w-[1400px] px-2 md:px-8" style={{ marginTop: '2vh' }}>
 
-                {/* Left Column: Car Image with 3D parallax */}
+                {/* Upper/Left Column: Car Image with 3D parallax & Sculptural Lighting */}
                 <motion.div
-                    initial={{ opacity: 0, x: -50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 1, delay: 0.2 }}
+                    initial={{ opacity: 0, scale: 0.9, x: -30 }}
+                    animate={{ opacity: 1, scale: 1, x: 0 }}
+                    transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
+                    className="w-[55%] md:w-[60%] lg:w-[60%] relative z-20 -mr-[12%] md:-mr-[10%] lg:-mr-[8%]"
                     style={{
-                        position: 'relative',
-                        zIndex: 10,
-                        width: '120%',
-                        marginLeft: '-10%',
                         rotateX,
                         rotateY,
-                        transformPerspective: 1000
+                        transformPerspective: 1200
                     }}
                 >
                     <img
                         src="/assets/hero_car_true_transparent.png"
-                        alt="High-end tinted luxury car"
+                        alt="High-end tinted luxury hypercar"
+                        fetchPriority="high"
+                        loading="eager"
                         style={{
                             width: '100%',
                             height: 'auto',
                             objectFit: 'contain',
-                            filter: 'drop-shadow(0 40px 80px rgba(0,0,0,0.9)) contrast(1.15) saturate(1.1)',
+                            // More pronounced, sculptural lighting
+                            filter: 'drop-shadow(0 40px 60px rgba(0,0,0,0.95)) drop-shadow(0 15px 25px rgba(0,0,0,0.8)) contrast(1.2) saturate(1.15) brightness(1.05)',
                         }}
                     />
                 </motion.div>
 
-                {/* Right Column: Glass Panel */}
+                {/* Lower/Right Column: Prismatic Glassmorphic Container */}
                 <motion.div
                     initial={{ opacity: 0, x: 50 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.8, delay: 0.5 }}
+                    transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
+                    className="w-[55%] md:w-[50%] lg:w-[48%] relative z-10"
                     style={{
-                        zIndex: 5,
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
                         textAlign: 'center',
-                        background: 'rgba(255, 255, 255, 0.03)',
-                        backdropFilter: 'blur(24px)',
-                        WebkitBackdropFilter: 'blur(24px)',
-                        border: '1px solid rgba(255, 255, 255, 0.08)',
-                        borderRadius: '24px',
-                        padding: '36px 28px',
-                        boxShadow: '0 30px 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1)'
+                        // High-end glassmorphism background
+                        background: 'linear-gradient(145deg, rgba(30, 30, 30, 0.4) 0%, rgba(5, 5, 5, 0.7) 100%)',
+                        backdropFilter: 'blur(40px)',
+                        WebkitBackdropFilter: 'blur(40px)',
+                        // Highly polished prismatic edges creating light refractions
+                        borderTop: '1px solid rgba(255, 255, 255, 0.15)',
+                        borderLeft: '1px solid rgba(255, 255, 255, 0.08)',
+                        borderRight: '1px solid rgba(255, 255, 255, 0.03)',
+                        borderBottom: '1px solid rgba(0, 0, 0, 0.9)',
+                        borderRadius: '32px',
+                        padding: 'clamp(16px, 3vw, 40px) clamp(12px, 2vw, 32px)',
+                        paddingLeft: 'clamp(36px, 10vw, 64px)', // Shifts text block safely away from Left Car Overlap
+                        boxShadow: '0 50px 100px rgba(0,0,0,0.9), inset 0 2px 15px rgba(255,255,255,0.05), inset 0 -2px 20px rgba(0,0,0,0.5)',
                     }}
                 >
                     {/* Stars */}
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '16px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '4px', marginBottom: '12px' }}>
                         <div style={{ display: 'flex', color: '#fbbf24' }}>
-                            {[1, 2, 3, 4, 5].map((s) => <Star key={s} size={12} fill="#fbbf24" stroke="none" />)}
+                            {[1, 2, 3, 4, 5].map((s) => <Star key={s} size={12} fill="#fbbf24" stroke="none" style={{ filter: 'drop-shadow(0 0 6px rgba(251, 191, 36, 0.4))' }} />)}
                         </div>
-                        <span style={{ fontSize: '11px', fontWeight: 600, color: 'var(--secondary-text)' }}>Over 500+ Five Star Reviews</span>
+                        <span style={{ fontSize: 'clamp(9px, 1vw, 12px)', fontWeight: 600, color: '#e5e7eb', letterSpacing: '0.02em' }}>Over 500+ Five Star Reviews</span>
                     </div>
 
                     {/* Heading */}
                     <h1 style={{
-                        fontSize: 'clamp(28px, 3.5vw, 48px)',
+                        fontSize: 'clamp(20px, 3.5vw, 54px)',
                         fontWeight: 900,
                         lineHeight: 1.05,
-                        marginBottom: '16px',
+                        marginBottom: '12px',
                         color: '#fff',
-                        letterSpacing: '-0.02em'
+                        letterSpacing: '-0.03em',
+                        textShadow: '0 10px 30px rgba(0,0,0,0.6)'
                     }}>
                         WINDOW TINTING<br />DONE RIGHT.
                     </h1>
@@ -196,24 +194,27 @@ const Hero: React.FC<HeroProps> = ({ setPage }) => {
                     {/* Subtitle */}
                     <p style={{
                         marginBottom: '24px',
-                        fontSize: '0.85rem',
+                        fontSize: 'clamp(12px, 1.25vw, 1.05rem)',
                         lineHeight: 1.5,
-                        color: 'var(--secondary-text)',
-                        whiteSpace: 'nowrap',
+                        color: 'rgba(255, 255, 255, 0.75)',
                         fontFamily: "'Solitreo', cursive",
+                        textShadow: '0 0 12px rgba(255, 255, 255, 0.15)',
+                        maxWidth: '92%',
+                        marginInline: 'auto',
+                        textAlign: 'center'
                     }}>
-                        Hollywood's premier window tinting specialists. Computer-cut precision, lifetime warranty, and 40+ years of experience.
+                        Premium window tinting with computer-cut precision and a lifetime warranty.
                     </p>
 
                     {/* Buttons */}
-                    <div style={{ display: 'flex', gap: '12px' }}>
-                        <button className="primary-btn" style={{ padding: '10px 20px', fontSize: '13px' }} onClick={() => setPage?.('contact')}>
+                    <div style={{ display: 'flex', gap: '8px', marginTop: '4px', flexWrap: 'wrap', justifyContent: 'center' }}>
+                        <button className="primary-btn" onClick={() => setPage?.('contact')} style={{ padding: 'clamp(8px, 1.5vw, 14px) clamp(12px, 2vw, 28px)', borderRadius: '14px' }}>
                             <GlowingEffect spread={40} glow={true} disabled={false} proximity={64} inactiveZone={0.01} borderWidth={2} />
-                            <span style={{ position: 'relative', zIndex: 10, display: 'flex', alignItems: 'center', gap: '8px' }}>Book Appointment <ArrowRight size={15} /></span>
+                            <span style={{ position: 'relative', zIndex: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', fontSize: 'clamp(12px, 1.2vw, 15px)' }}>Book Appointment <ArrowRight size={14} /></span>
                         </button>
-                        <button className="secondary-btn" style={{ padding: '10px 20px', fontSize: '13px' }} onClick={() => setPage?.('services')}>
+                        <button className="secondary-btn" onClick={() => setPage?.('services')} style={{ padding: 'clamp(8px, 1.5vw, 14px) clamp(12px, 2vw, 28px)', borderRadius: '14px' }}>
                             <GlowingEffect spread={40} glow={true} disabled={false} proximity={64} inactiveZone={0.01} borderWidth={2} />
-                            <span style={{ position: 'relative', zIndex: 10 }}>Our Services</span>
+                            <span style={{ position: 'relative', zIndex: 10, fontSize: 'clamp(12px, 1.2vw, 15px)' }}>Our Services</span>
                         </button>
                     </div>
                 </motion.div>

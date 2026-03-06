@@ -12,11 +12,9 @@ const Contact: React.FC = () => {
             position: 'relative',
             padding: '200px 0 80px',
         }}>
-            <div className="container" style={{
+            <div className="container grid grid-cols-1 md:grid-cols-[1fr_1.2fr]" style={{
                 position: 'relative',
                 zIndex: 2,
-                display: 'grid',
-                gridTemplateColumns: '1fr 1.2fr',
                 gap: '60px',
             }}>
                 {/* Info Card */}
@@ -84,7 +82,7 @@ const Contact: React.FC = () => {
                 >
                     <h2 style={{ fontSize: '2.5rem', fontWeight: 800 }}>Schedule Appointment</h2>
                     <form style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                             <FormInput placeholder="Your Name" />
                             <FormInput placeholder="Your Email" type="email" />
                         </div>
@@ -122,8 +120,6 @@ const Contact: React.FC = () => {
                             style={{
                                 marginTop: '10px',
                                 justifyContent: 'center',
-                                padding: '20px',
-                                fontSize: '1.1rem',
                                 width: '100%'
                             }}
                             onClick={(e) => e.preventDefault()}

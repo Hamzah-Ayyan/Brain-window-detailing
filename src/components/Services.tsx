@@ -67,10 +67,8 @@ const Services: React.FC = () => {
                             initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
-                            className="glass-card group relative"
+                            className={`glass-card group relative grid grid-cols-1 ${index % 2 === 0 ? 'md:grid-cols-[1fr_1.2fr]' : 'md:grid-cols-[1.2fr_1fr]'}`}
                             style={{
-                                display: 'grid',
-                                gridTemplateColumns: index % 2 === 0 ? '1fr 1.2fr' : '1.2fr 1fr',
                                 overflow: 'hidden',
                                 alignItems: 'center',
                                 gap: '40px',
@@ -125,6 +123,7 @@ const Services: React.FC = () => {
                                 <img
                                     src={service.image}
                                     alt={service.title}
+                                    loading="lazy"
                                     style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                                 />
                                 <div style={{

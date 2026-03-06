@@ -166,7 +166,7 @@ export default function RadialOrbitalTimeline({
                             <div
                                 key={item.id}
                                 ref={(el) => { nodeRefs.current[item.id] = el; }}
-                                className="absolute transition-all duration-300 cursor-pointer"
+                                className="absolute cursor-pointer"
                                 style={nodeStyle}
                                 onMouseEnter={() => handleMouseEnter(item.id)}
                                 onMouseLeave={handleMouseLeave}

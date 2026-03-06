@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
@@ -14,7 +14,14 @@ export type PageType = 'home' | 'services' | 'work' | 'virtual' | 'laws' | 'abou
 
 function App() {
   const [activePage, setActivePage] = useState<PageType>('home');
-  const [showBanner, setShowBanner] = useState(true);
+  const [showBanner, setShowBanner] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowBanner(true);
+    }, 1500);
+    return () => clearTimeout(timer);
+  }, []);
 
   const renderPage = () => {
     switch (activePage) {
@@ -31,27 +38,33 @@ function App() {
 
   return (
     <div className="app-container dark" style={{ position: 'relative', minHeight: '100vh', overflowX: 'hidden' }}>
-      {showBanner && (
-        <div style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          zIndex: 101,
-          padding: '8px 0',
-          background: 'rgba(5, 5, 5, 0.9)',
-          backdropFilter: 'blur(12px)',
-          borderBottom: '1px solid rgba(255, 255, 255, 0.06)',
-        }}>
-          <UpgradeBanner
-            buttonText="Book Now"
-            description="— 15% off window tinting this week only!"
-            onClose={() => setShowBanner(false)}
-            onClick={() => setActivePage('contact')}
-          />
-        </div>
-      )}
-      <Navbar activePage={activePage} setPage={setActivePage} bannerVisible={showBanner} />
+      <Navbar activePage={activePage} setPage={setActivePage} />
+
+      <AnimatePresence>
+        {showBanner && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
+            style={{
+              position: 'fixed',
+              top: '80px',
+              left: 0,
+              right: 0,
+              zIndex: 90,
+              padding: 0,
+              margin: 0,
+            }}>
+            <UpgradeBanner
+              buttonText="Book Now"
+              description="— 15% off window tinting this week only!"
+              onClose={() => setShowBanner(false)}
+              onClick={() => setActivePage('contact')}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <main>
         <AnimatePresence mode="wait">
