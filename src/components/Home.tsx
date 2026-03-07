@@ -1,10 +1,12 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import Hero from './Hero';
 import HomeAbout from './HomeAbout';
 import Contact from './Contact';
-import { Calendar } from './ui/calendar';
 import RadialOrbitalTimeline from './ui/radial-orbital-timeline';
 import { LocationMap } from './ui/expand-map';
+import PricingSection from './ui/pricing-section';
+import Testimonials from './Testimonials';
 import { Car, Building2, Home as HomeIcon } from 'lucide-react';
 
 const serviceTimelineData = [
@@ -47,21 +49,33 @@ const serviceTimelineData = [
 ];
 
 interface HomeProps {
-    setPage?: (page: 'home' | 'services' | 'work' | 'virtual' | 'laws' | 'about' | 'contact') => void;
+    setPage?: (page: 'home' | 'services' | 'pricing' | 'work' | 'virtual' | 'laws' | 'about' | 'contact') => void;
 }
 
 const Home: React.FC<HomeProps> = ({ setPage }) => {
     return (
         <div className="flex flex-col w-full">
             <Hero setPage={setPage} />
-            <div className="bg-black relative z-10">
+            <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="bg-black relative z-10"
+            >
                 <div className="container mx-auto" style={{ paddingTop: '80px', paddingBottom: '20px' }}>
                     <h2 className="text-4xl md:text-5xl font-black text-white text-center mb-8">Explore Our Services</h2>
                     <RadialOrbitalTimeline timelineData={serviceTimelineData} setPage={setPage} />
                 </div>
-            </div>
+            </motion.div>
 
-            <div className="py-24 bg-black flex flex-col items-center justify-center relative overflow-hidden">
+            <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="py-24 bg-black flex flex-col items-center justify-center relative overflow-hidden"
+            >
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(59,130,246,0.05)_0%,_transparent_70%)]" />
 
                 <div className="container mx-auto flex flex-col items-center z-10">
@@ -71,13 +85,44 @@ const Home: React.FC<HomeProps> = ({ setPage }) => {
                         coordinates="5939 W Park Rd, Hollywood, FL 33021"
                     />
                 </div>
-            </div>
+            </motion.div>
 
-            <div className="py-12 bg-black">
-                <Calendar />
-            </div>
-            <HomeAbout />
-            <Contact />
+            {/* Pricing Section underneath the map */}
+            <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+                <PricingSection />
+            </motion.div>
+
+            <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+                <HomeAbout />
+            </motion.div>
+
+            <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+                <Testimonials />
+            </motion.div>
+
+            <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+                <Contact />
+            </motion.div>
         </div>
     );
 };

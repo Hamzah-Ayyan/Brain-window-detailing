@@ -15,6 +15,7 @@ const Navbar: React.FC<NavbarProps> = ({ activePage, setPage }) => {
   const navItems: { name: string; id: PageType }[] = [
     { name: 'Home', id: 'home' },
     { name: 'Services', id: 'services' },
+    { name: 'Pricing', id: 'pricing' },
     { name: 'Our Work', id: 'work' },
     { name: 'Virtual Tint', id: 'virtual' },
     { name: 'Tint Laws', id: 'laws' },

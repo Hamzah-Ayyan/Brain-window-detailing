@@ -2,15 +2,14 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Clock } from 'lucide-react';
 import { GlowingEffect } from './ui/glowing-effect';
-import { Calendar } from './ui/calendar';
 
 const Contact: React.FC = () => {
     return (
         <section style={{
-            minHeight: '100vh',
             width: '100%',
             position: 'relative',
-            padding: '200px 0 80px',
+            padding: '200px 0 100px',
+            backgroundColor: '#000'
         }}>
             <div className="container grid grid-cols-1 md:grid-cols-[1fr_1.2fr]" style={{
                 position: 'relative',
@@ -128,18 +127,6 @@ const Contact: React.FC = () => {
                             <span style={{ position: 'relative', zIndex: 10, width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>SUBMIT REQUEST</span>
                         </button>
                     </form>
-                </motion.div>
-            </div>
-
-            {/* Booking Calendar Section */}
-            <div className="container" style={{ position: 'relative', zIndex: 2, marginTop: '80px' }}>
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
-                >
-                    <Calendar />
                 </motion.div>
             </div>
         </section>

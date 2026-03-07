@@ -122,7 +122,7 @@ const Hero: React.FC<HeroProps> = ({ setPage }) => {
                     initial={{ opacity: 0, scale: 0.9, x: -30 }}
                     animate={{ opacity: 1, scale: 1, x: 0 }}
                     transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
-                    className="w-[55%] md:w-[60%] lg:w-[60%] relative z-20 -mr-[12%] md:-mr-[10%] lg:-mr-[8%]"
+                    className="w-[55%] md:w-[60%] lg:w-[60%] relative z-20 -mr-[12%] md:-mr-[10%] lg:-mr-[8%] pointer-events-none"
                     style={{
                         rotateX,
                         rotateY,
@@ -130,7 +130,7 @@ const Hero: React.FC<HeroProps> = ({ setPage }) => {
                     }}
                 >
                     <img
-                        src="/assets/hero_car_true_transparent.png"
+                        src="/assets/car_true_transparent.png"
                         alt="High-end tinted luxury hypercar"
                         fetchPriority="high"
                         loading="eager"
@@ -138,7 +138,7 @@ const Hero: React.FC<HeroProps> = ({ setPage }) => {
                             width: '100%',
                             height: 'auto',
                             objectFit: 'contain',
-                            // More pronounced, sculptural lighting
+                            // More pronounced, sculptural lighting enabled by true transparency
                             filter: 'drop-shadow(0 40px 60px rgba(0,0,0,0.95)) drop-shadow(0 15px 25px rgba(0,0,0,0.8)) contrast(1.2) saturate(1.15) brightness(1.05)',
                         }}
                     />

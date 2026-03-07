@@ -8,9 +8,11 @@ import VirtualTinter from './components/VirtualTinter';
 import TintLaws from './components/TintLaws';
 import About from './components/About';
 import Contact from './components/Contact';
+import Pricing from './components/Pricing';
+import Footer from './components/Footer';
 import { UpgradeBanner } from './components/ui/upgrade-banner';
 
-export type PageType = 'home' | 'services' | 'work' | 'virtual' | 'laws' | 'about' | 'contact';
+export type PageType = 'home' | 'services' | 'pricing' | 'work' | 'virtual' | 'laws' | 'about' | 'contact';
 
 function App() {
   const [activePage, setActivePage] = useState<PageType>('home');
@@ -27,6 +29,7 @@ function App() {
     switch (activePage) {
       case 'home': return <Home setPage={setActivePage} />;
       case 'services': return <Services />;
+      case 'pricing': return <Pricing />;
       case 'work': return <Gallery />;
       case 'virtual': return <VirtualTinter />;
       case 'laws': return <TintLaws />;
@@ -79,6 +82,8 @@ function App() {
           </motion.div>
         </AnimatePresence>
       </main>
+
+      <Footer setPage={setActivePage} />
 
       {/* Global Background Elements */}
       <div style={{

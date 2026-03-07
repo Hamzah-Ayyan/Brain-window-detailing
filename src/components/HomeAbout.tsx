@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Building, Truck } from 'lucide-react';
+import { Building, Truck } from 'lucide-react';
 import { GlowingEffect } from './ui/glowing-effect';
 
 const HomeAbout: React.FC = () => {
@@ -62,35 +62,41 @@ const HomeAbout: React.FC = () => {
                         </div>
                     </div>
 
-                    {/* Right side Visual/Glass display */}
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.4 }}
-                        className="relative w-full aspect-square md:aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl bg-[#0a0a0a]"
-                    >
-                        {/* Background subtle elements */}
-                        <div className="absolute inset-0 bg-gradient-to-tr from-blue-900/20 to-transparent mix-blend-screen" />
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] bg-[radial-gradient(circle_at_center,rgba(0,100,255,0.1)_0%,transparent_50%)]" />
-
-                        {/* Foreground glass floating card containing location info for visual flair */}
-                        <div className="absolute bottom-8 left-8 right-8 z-20 bg-black/40 backdrop-blur-xl border border-white/10 rounded-2xl p-6 flex items-center gap-6 shadow-2xl overflow-hidden group">
-                            <GlowingEffect spread={40} glow={true} disabled={false} proximity={64} inactiveZone={0.01} borderWidth={2} className="opacity-0 group-hover:opacity-100 transition-opacity" />
-                            <div className="relative z-10 w-16 h-16 rounded-full bg-blue-500/20 flex items-center justify-center border border-blue-500/30 flex-shrink-0">
-                                <MapPin className="text-blue-500" size={28} />
-                            </div>
-                            <div className="relative z-10">
-                                <h3 className="text-white font-bold text-xl">Hollywood, FL</h3>
-                                <p className="text-gray-400 text-sm mt-1">At the exact same location for over 20 years.</p>
-                            </div>
-                        </div>
-
+                    {/* Right side Visual/Glass display - Clean Version */}
+                    <div className="relative w-full aspect-[4/3] flex items-center justify-center mt-10 md:mt-0">
                         {/* Huge background text watermark */}
-                        <div className="absolute right-[-10%] top-[-10%] text-[200px] font-black text-white/[0.02] leading-none select-none">
+                        <div className="absolute right-[-10%] top-1/4 text-[180px] md:text-[220px] font-black text-white/[0.02] leading-none select-none pointer-events-none">
                             1982
                         </div>
-                    </motion.div>
+
+                        {/* Middle layer: 3D Transparent Animated Car */}
+                        <motion.div
+                            className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none"
+                            initial={{ x: 50, opacity: 0 }}
+                            whileInView={{ x: 0, opacity: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.6, duration: 1, ease: "easeOut" }}
+                            style={{ perspective: 1000 }}
+                        >
+                            <motion.img
+                                src="/assets/about_car_animated_transparent.png"
+                                alt="Dark Hypercar with Scissor Doors"
+                                className="w-[125%] max-w-[125%] object-contain mt-12 md:mt-16 ml-0 md:-ml-8"
+                                animate={{
+                                    y: [0, -12, 0] // Subtle floating animation
+                                }}
+                                transition={{
+                                    duration: 6,
+                                    repeat: Infinity,
+                                    ease: "easeInOut"
+                                }}
+                                style={{
+                                    // Make it look physical and lit correctly
+                                    filter: 'drop-shadow(0 40px 50px rgba(0,0,0,0.95)) drop-shadow(0 20px 20px rgba(0,0,0,0.9)) contrast(1.1) saturate(1.05) brightness(1.1)'
+                                }}
+                            />
+                        </motion.div>
+                    </div>
 
                 </div>
             </div>
