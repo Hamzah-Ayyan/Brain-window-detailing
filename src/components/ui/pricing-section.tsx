@@ -3,8 +3,9 @@ import { useRef, useState } from "react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { TimelineContent } from "@/components/ui/timeline-animation";
 import NumberFlow from "@number-flow/react";
-import { ShieldCheck, CheckCheck, MapPinned, Building2, Car, ArrowRight } from "lucide-react";
+import { ShieldCheck, CheckCheck, MapPinned, Building2, Car } from "lucide-react";
 import { motion } from "framer-motion";
+import { PremiumButton } from "./premium-button";
 
 const plans = [
     {
@@ -234,15 +235,14 @@ export default function PricingSection() {
                             </CardHeader>
 
                             <CardContent className="pt-2 flex flex-col flex-1">
-                                <button
-                                    className={`w-[90%] mx-auto mb-8 py-3.5 px-6 text-sm font-bold uppercase tracking-wider rounded-xl transition-all duration-300 transform hover:-translate-y-1 active:scale-95 flex items-center justify-center gap-2 ${plan.popular
-                                        ? "bg-blue-600 hover:bg-blue-500 text-white shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:shadow-[0_0_30px_rgba(37,99,235,0.6)]"
-                                        : "bg-white/5 hover:bg-white/10 text-white border border-white/10"
-                                        }`}
-                                >
-                                    {plan.buttonText}
-                                    <ArrowRight className={`w-4 h-4 transition-transform group-hover:translate-x-1 ${plan.popular ? "text-white" : "text-gray-400"}`} />
-                                </button>
+                                <PremiumButton
+                                    icon={plan.name === "Automotive Tint" ? <Car /> : plan.name === "Residential Tint" ? <MapPinned /> : <Building2 />}
+                                    title={plan.buttonText}
+                                    subtitle={plan.popular ? "Best Value" : "Expert Quality"}
+                                    size="md"
+                                    className="w-[95%] mx-auto mb-6"
+                                    onClick={() => pricingRef.current?.scrollIntoView({ behavior: 'smooth' })}
+                                />
 
                                 <ul className="space-y-4 font-medium mb-8">
                                     {plan.features.map((feature, featureIndex) => (

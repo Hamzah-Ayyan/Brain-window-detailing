@@ -5,6 +5,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     title: string;
     subtitle?: string;
     size?: "sm" | "md" | "lg";
+    variant?: "default" | "secondary";
     gradientLight?: { from: string; via: string; to: string };
     gradientDark?: { from: string; via: string; to: string };
 }
@@ -14,11 +15,22 @@ export const PremiumButton: React.FC<ButtonProps> = ({
     title,
     subtitle,
     size = "md",
-    gradientLight = { from: "from-blue-500/40", via: "via-blue-400/40", to: "to-blue-500/60" },
-    gradientDark = { from: "from-blue-800/30", via: "via-black/50", to: "to-black/70" },
+    variant = "default",
+    gradientLight,
+    gradientDark,
     className = "",
     ...props
 }) => {
+    const defaultLight = variant === "secondary"
+        ? { from: "from-white/5", via: "via-white/2", to: "to-white/5" }
+        : { from: "from-blue-500/40", via: "via-blue-400/40", to: "to-blue-500/60" };
+
+    const defaultDark = variant === "secondary"
+        ? { from: "from-neutral-900/50", via: "via-black/50", to: "to-black/70" }
+        : { from: "from-blue-800/30", via: "via-black/50", to: "to-black/70" };
+
+    const gLight = gradientLight || defaultLight;
+    const gDark = gradientDark || defaultDark;
     const sizes = {
         sm: "p-3 rounded-xl",
         md: "p-4 rounded-2xl",
@@ -31,8 +43,9 @@ export const PremiumButton: React.FC<ButtonProps> = ({
             className={`group relative overflow-hidden border-2 cursor-pointer transition-all duration-500 ease-out 
                   shadow-2xl hover:shadow-blue-500/30 hover:scale-[1.02] hover:-translate-y-1 active:scale-95
                   ${sizes[size]} 
-                  border-blue-500/40 bg-gradient-to-br ${gradientLight.from} ${gradientLight.via} ${gradientLight.to} 
-                  dark:${gradientDark.from} dark:${gradientDark.via} dark:${gradientDark.to} ${className}`}
+                  ${variant === 'secondary' ? 'border-white/10' : 'border-blue-500/40'}
+                  bg-gradient-to-br ${gLight.from} ${gLight.via} ${gLight.to} 
+                  dark:${gDark.from} dark:${gDark.via} dark:${gDark.to} ${className}`}
         >
             {/* Moving gradient layer */}
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-300/40 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>

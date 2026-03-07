@@ -1,9 +1,9 @@
 import React, { type MouseEvent } from 'react';
 import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
-import { ArrowRight, Star } from 'lucide-react';
+import { Star, Calendar, Settings } from 'lucide-react';
 import { BackgroundGradientAnimation } from './ui/background-gradient-animation';
 import { FloatingPaths } from './ui/background-paths';
-import { GlowingEffect } from './ui/glowing-effect';
+import { PremiumButton } from './ui/premium-button';
 
 interface HeroProps {
     setPage?: (page: 'home' | 'services' | 'work' | 'virtual' | 'laws' | 'about' | 'contact') => void;
@@ -207,15 +207,23 @@ const Hero: React.FC<HeroProps> = ({ setPage }) => {
                     </p>
 
                     {/* Buttons */}
-                    <div style={{ display: 'flex', gap: '8px', marginTop: '4px', flexWrap: 'wrap', justifyContent: 'center' }}>
-                        <button className="primary-btn" onClick={() => setPage?.('contact')} style={{ padding: 'clamp(8px, 1.5vw, 14px) clamp(12px, 2vw, 28px)', borderRadius: '14px' }}>
-                            <GlowingEffect spread={40} glow={true} disabled={false} proximity={64} inactiveZone={0.01} borderWidth={2} />
-                            <span style={{ position: 'relative', zIndex: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', fontSize: 'clamp(12px, 1.2vw, 15px)' }}>Book Appointment <ArrowRight size={14} /></span>
-                        </button>
-                        <button className="secondary-btn" onClick={() => setPage?.('services')} style={{ padding: 'clamp(8px, 1.5vw, 14px) clamp(12px, 2vw, 28px)', borderRadius: '14px' }}>
-                            <GlowingEffect spread={40} glow={true} disabled={false} proximity={64} inactiveZone={0.01} borderWidth={2} />
-                            <span style={{ position: 'relative', zIndex: 10, fontSize: 'clamp(12px, 1.2vw, 15px)' }}>Our Services</span>
-                        </button>
+                    <div className="flex gap-4 mt-6 flex-wrap justify-center relative z-20">
+                        <PremiumButton
+                            icon={<Calendar />}
+                            title="Book Appointment"
+                            subtitle="Fast & Precise"
+                            size="md"
+                            onClick={() => setPage?.('contact')}
+                        />
+                        <PremiumButton
+                            icon={<Settings />}
+                            title="Our Services"
+                            subtitle="Explore Options"
+                            size="md"
+                            variant="secondary"
+                            className="bg-white/5 border-white/10"
+                            onClick={() => setPage?.('services')}
+                        />
                     </div>
                 </motion.div>
 
