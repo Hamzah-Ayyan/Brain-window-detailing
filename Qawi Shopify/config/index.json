@@ -1,0 +1,66 @@
+{
+  "sections": [
+    {
+      "type": "hero",
+      "blocks": [],
+      "settings": {
+        "image": "{{ 'hero-placeholder.jpg' | asset_url }}",
+        "overlay_opacity": 60,
+        "headline_line1": "QAWI",
+        "headline_line1_color": "#0A0A0A",
+        "headline_line1_font": "Bebas Neue",
+        "headline_line1_size": 80,
+        "headline_line2": "FOR THE",
+        "headline_line2_color": "#0A0A0A",
+        "headline_line2_size": 64,
+        "headline_line3": "WORK",
+        "headline_line3_color": "#0A0A0A",
+        "headline_line3_size": 64,
+        "body_text": "Performance wear engineered for athletes who don't make excuses. Every stitch. Every rep. Every result.",
+        "body_color": "#FFFFFF",
+        "cta_text": "SHOP THE COLLECTION →",
+        "cta_link": "/collections/all",
+        "cta_bg": "#CCFF00",
+        "cta_text_color": "#0A0A0A",
+        "secondary_text": "OUR STORY",
+        "secondary_link": "/pages/about"
+      }
+    },
+    {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Featured Categories",
+        "collections": ["men", "women", "heavyweight"],
+        "image_style": "greyscale",
+        "hover_tint": "#CCFF00",
+        "text_color": "#FFFFFF",
+        "text_font": "Bebas Neue",
+        "text_size": 24
+      }
+    },
+    {
+      "type": "custom",
+      "blocks": [],
+      "settings": {
+        "custom_liquid": "snippets/pakistani-trust-badge.liquid"
+      }
+    },
+    {
+      "type": "featured-products",
+      "settings": {
+        "title": "Precision Series",
+        "collection": "precision-series",
+        "products_per_row": 4,
+        "show_vendor": false,
+        "show_rating": false
+      }
+    },
+    {
+      "type": "custom",
+      "blocks": [],
+      "settings": {
+        "custom_liquid": "snippets/instagram-feed.liquid"
+      }
+    }
+  ]
+}

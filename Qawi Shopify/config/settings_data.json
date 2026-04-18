@@ -1,0 +1,86 @@
+{
+  "current": {
+    "name": "QAWI",
+    "theme_id": null,
+    "theme_store_id": null
+  },
+  "presets": [],
+  "settings": [
+    {
+      "type": "color",
+      "id": "color_background",
+      "label": "Primary Background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "color_secondary_background",
+      "label": "Secondary Background",
+      "default": "#F5F5F5"
+    },
+    {
+      "type": "color",
+      "id": "color_text",
+      "label": "Primary Text",
+      "default": "#0A0A0A"
+    },
+    {
+      "type": "color",
+      "id": "color_accent",
+      "label": "Accent / Interactive",
+      "default": "#CCFF00"
+    },
+    {
+      "type": "color",
+      "id": "color_secondary_accent",
+      "label": "Secondary Accent",
+      "default": "#DC143C"
+    },
+    {
+      "type": "color",
+      "id": "color_border",
+      "label": "Borders / Dividers",
+      "default": "#E5E5E5"
+    },
+    {
+      "type": "font_picker",
+      "id": "font_headlines",
+      "label": "Headline Font",
+      "default": "Bebas Neue, sans-serif"
+    },
+    {
+      "type": "font_picker",
+      "id": "font_body",
+      "label": "Body / UI Font",
+      "default": "Inter, sans-serif"
+    },
+    {
+      "type": "select",
+      "id": "currency",
+      "label": "Store Currency",
+      "default": "PKR",
+      "options": [
+        {"value": "PKR", "label": "Pakistani Rupee (Rs.)"},
+        {"value": "USD", "label": "US Dollar (fallback)"}
+      ]
+    },
+    {
+      "type": "text",
+      "id": "announcement_text",
+      "label": "Announcement Bar Text",
+      "default": "AS-SALAAM-ALAIKUM • FREE SHIPPING OVER Rs. 5,000 • 30-DAY RETURNS"
+    },
+    {
+      "type": "color",
+      "id": "announcement_bg",
+      "label": "Announcement Bar Background",
+      "default": "#0A0A0A"
+    },
+    {
+      "type": "color",
+      "id": "announcement_text_color",
+      "label": "Announcement Bar Text Color",
+      "default": "#FFFFFF"
+    }
+  ]
+}

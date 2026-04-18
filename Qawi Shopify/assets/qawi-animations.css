@@ -1,0 +1,266 @@
+/* ============================================================
+   QAWI — ANIMATIONS & MICRO-INTERACTIONS
+   ============================================================ */
+
+/* ── Keyframes ────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-60px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(60px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes pulse-accent {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(200, 255, 0, 0); }
+  50%       { box-shadow: 0 0 0 8px rgba(200, 255, 0, 0.15); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-12px); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes drawLine {
+  from { width: 0; }
+  to   { width: 100%; }
+}
+
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Scroll-Triggered Reveal Classes ─────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal-left.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal-right.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal-scale.is-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Stagger delays */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+.delay-5 { transition-delay: 0.5s; }
+.delay-6 { transition-delay: 0.6s; }
+
+/* ── Page Load Animation ──────────────────────────────────── */
+.page-enter {
+  animation: fadeIn 0.8s ease forwards;
+}
+
+/* ── Hover Lift ───────────────────────────────────────────── */
+.hover-lift {
+  transition: transform var(--tr-smooth), box-shadow var(--tr-smooth);
+}
+.hover-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ── Image Zoom on Hover ──────────────────────────────────── */
+.img-zoom {
+  overflow: hidden;
+}
+.img-zoom img {
+  transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.img-zoom:hover img {
+  transform: scale(1.06);
+}
+
+/* ── Accent Underline ─────────────────────────────────────── */
+.underline-accent {
+  position: relative;
+  display: inline-block;
+}
+.underline-accent::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--clr-accent);
+  transition: width 0.35s ease;
+}
+.underline-accent:hover::after,
+.underline-accent.active::after {
+  width: 100%;
+}
+
+/* ── Magnetic Button Effect (JS-driven) ───────────────────── */
+.btn-magnetic {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ── Shimmer Loading State ────────────────────────────────── */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--clr-surface) 25%,
+    var(--clr-surface-2) 50%,
+    var(--clr-surface) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* ── Nav Link Animation ───────────────────────────────────── */
+.nav-link {
+  position: relative;
+  overflow: hidden;
+}
+.nav-link::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  color: var(--clr-accent);
+  transition: top 0.25s ease;
+  white-space: nowrap;
+}
+.nav-link:hover::before {
+  top: 0;
+}
+.nav-link span {
+  display: block;
+  transition: transform 0.25s ease;
+}
+.nav-link:hover span {
+  transform: translateY(-100%);
+}
+
+/* ── Cart Badge Pulse ─────────────────────────────────────── */
+.cart-badge {
+  animation: pulse-accent 2s ease infinite;
+}
+
+/* ── Announcement Bar Ticker ──────────────────────────────── */
+.ticker-track {
+  display: flex;
+  animation: ticker 28s linear infinite;
+  will-change: transform;
+}
+.ticker-track:hover {
+  animation-play-state: paused;
+}
+
+/* ── Floating Element ─────────────────────────────────────── */
+.float-anim {
+  animation: float 5s ease-in-out infinite;
+}
+
+/* ── Loader ───────────────────────────────────────────────── */
+#page-loader {
+  position: fixed;
+  inset: 0;
+  background: var(--clr-bg);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+#page-loader.loaded {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.loader-logo {
+  font-size: 2.5rem;
+  font-weight: var(--fw-black);
+  letter-spacing: var(--ls-tight);
+  color: var(--clr-accent);
+  animation: pulse-accent 1.5s ease infinite;
+}
+
+/* ── Cursor Glow (desktop only) ───────────────────────────── */
+#cursor-glow {
+  position: fixed;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200, 255, 0, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+  transform: translate(-50%, -50%);
+  transition: left 0.08s, top 0.08s;
+  will-change: left, top;
+}
+
+@media (max-width: 768px) {
+  #cursor-glow { display: none; }
+}

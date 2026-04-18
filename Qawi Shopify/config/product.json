@@ -1,0 +1,48 @@
+{
+  "sections": [
+    {
+      "type": "product-media",
+      "settings": {
+        "media_type": "video",
+        "video_url": "{{ 'placeholder-video.mp4' | asset_url }}",
+        "autoplay": true,
+        "muted": true,
+        "loop": true
+      }
+    },
+    {
+      "type": "product-media",
+      "settings": {
+        "media_type": "image",
+        "image": "{{ 'placeholder-image-1.jpg' | asset_url }}"
+      }
+    },
+    {
+      "type": "product-media",
+      "settings": {
+        "media_type": "image",
+        "image": "{{ 'placeholder-image-2.jpg' | asset_url }}"
+      }
+    },
+    {
+      "type": "product-info",
+      "settings": {
+        "vendor": "QAWI",
+        "title_font": "Bebas Neue",
+        "title_size": 36,
+        "price_font": "Inter",
+        "price_size": 24,
+        "price_color": "#0A0A0A",
+        "installment_text": "4 interest‑free payments of Rs. X,XXX with Klarna.",
+        "variant_color_swatches": true,
+        "variant_size_pills": true,
+        "add_to_cart_text": "ADD TO BAG — LET'S GO",
+        "add_to_cart_bg": "#CCFF00",
+        "add_to_cart_color": "#0A0A0A",
+        "badge_text": "Free 30‑Day Returns",
+        "badge_color": "#FFFFFF",
+        "badge_bg": "#0A0A0A"
+      }
+    }
+  ]
+}

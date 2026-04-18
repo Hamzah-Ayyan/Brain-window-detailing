@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Qawi — Premium Performance Gym Wear. Engineered for athletes who demand precision, durability, and uncompromising style." />
+  <title>Qawi — Premium Performance Gym Wear</title>
+
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/qawi-base.css" />
+  <link rel="stylesheet" href="assets/qawi-animations.css" />
+  <link rel="stylesheet" href="assets/qawi-components.css" />
+<link rel="stylesheet" href="assets/custom.css" />
+
+  <style>
+    /* ── Hero Section ──────────────────────────────────────── */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      min-height: 700px;
+      max-height: 1080px;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+      background: var(--clr-bg);
+      margin-top: 0;
+    }
+
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero__bg-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    /* Dark gradient overlays */
+    .hero__bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to right, rgba(8,8,8,0.92) 0%, rgba(8,8,8,0.4) 60%, rgba(8,8,8,0.1) 100%),
+        linear-gradient(to top, rgba(8,8,8,1) 0%, rgba(8,8,8,0.3) 40%, rgba(8,8,8,0) 100%);
+    }
+
+    /* Fake athlete silhouette using CSS art */
+    .hero__athlete {
+      position: absolute;
+      right: 8%;
+      bottom: 0;
+      width: 680px;
+      height: 90%;
+      z-index: 1;
+      display: flex;
+      align-items: flex-end;
+    }
+    .hero__athlete-gradient {
+      width: 100%;
+      height: 100%;
+      background:
+        radial-gradient(ellipse 55% 75% at 50% 45%, rgba(200,255,0,0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 70% 80% at 50% 60%, rgba(30,30,30,0.9) 0%, transparent 80%);
+      border-radius: 0;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .hero__content {
+      position: relative;
+      z-index: 10;
+      padding: 0 var(--gutter);
+      padding-bottom: clamp(4rem, 7vw, 7rem);
+      max-width: var(--max-width);
+      width: 100%;
+      margin-inline: auto;
+    }
+
+    .hero__eyebrow {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-3);
+      font-size: var(--fs-xs);
+      font-weight: var(--fw-bold);
+      letter-spacing: var(--ls-widest);
+      text-transform: uppercase;
+      color: var(--clr-accent);
+      margin-bottom: var(--sp-5);
+      animation: slideInLeft 0.8s ease 0.6s backwards;
+    }
+    .hero__eyebrow-line {
+      width: 32px;
+      height: 1.5px;
+      background: var(--clr-accent);
+    }
+
+    .hero__title {
+      font-size: clamp(3.5rem, 10vw, 8.5rem);
+      font-weight: var(--fw-black);
+      letter-spacing: -0.04em;
+      line-height: 0.92;
+      text-transform: uppercase;
+      color: var(--clr-white);
+      max-width: 700px;
+      animation: slideInLeft 0.8s ease 0.75s backwards;
+    }
+
+    .hero__title .line-accent {
+      color: var(--clr-accent);
+      display: block;
+    }
+    .hero__title .line-outline {
+      -webkit-text-stroke: 1.5px rgba(255,255,255,0.25);
+      color: transparent;
+      display: block;
+    }
+
+    .hero__desc {
+      font-size: var(--fs-md);
+      color: rgba(255,255,255,0.55);
+      line-height: var(--lh-relaxed);
+      max-width: 400px;
+      margin-block: var(--sp-8);
+      animation: slideInLeft 0.8s ease 0.9s backwards;
+    }
+
+    .hero__actions {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-4);
+      flex-wrap: wrap;
+      animation: slideInLeft 0.8s ease 1.05s backwards;
+    }
+
+    .hero__scroll {
+      position: absolute;
+      bottom: var(--sp-8);
+      right: var(--gutter);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--sp-2);
+      color: var(--clr-muted);
+      font-size: var(--fs-xs);
+      letter-spacing: var(--ls-widest);
+      text-transform: uppercase;
+      z-index: 10;
+      animation: fadeIn 1.2s ease 1.5s backwards;
+    }
+    .scroll-line {
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(to bottom, var(--clr-muted), transparent);
+      animation: float 2.5s ease-in-out infinite;
+    }
+
+    /* Hero background gradient shapes */
+    .hero__shapes {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .shape {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.15;
+    }
+    .shape-1 {
+      width: 600px;
+      height: 600px;
+      background: var(--clr-accent);
+      top: -200px;
+      right: 10%;
+    }
+    .shape-2 {
+      width: 400px;
+      height: 400px;
+      background: #00B4FF;
+      bottom: -100px;
+      right: 35%;
+      opacity: 0.05;
+    }
+    .shape-3 {
+      width: 300px;
+      height: 300px;
+      background: var(--clr-accent);
+      bottom: 10%;
+      left: 5%;
+      opacity: 0.04;
+    }
+
+    /* ── Brand Statement ─────────────────────────────────── */
+    .brand-statement {
+      padding: clamp(5rem, 10vw, 10rem) var(--gutter);
+      background: var(--clr-bg);
+      overflow: hidden;
+      text-align: center;
+    }
+    .statement-pre {
+      font-size: var(--fs-sm);
+      font-weight: var(--fw-medium);
+      letter-spacing: var(--ls-widest);
+      text-transform: uppercase;
+      color: var(--clr-muted);
+      margin-bottom: var(--sp-6);
+    }
+    .statement-text {
+      font-size: clamp(2.5rem, 6.5vw, 6.5rem);
+      font-weight: var(--fw-black);
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      color: var(--clr-white);
+      max-width: 1100px;
+      margin-inline: auto;
+    }
+    .statement-text .highlight {
+      color: var(--clr-accent);
+      position: relative;
+    }
+    .statement-text .ghost {
+      -webkit-text-stroke: 1px rgba(255,255,255,0.15);
+      color: transparent;
+    }
+    .statement-sub {
+      font-size: var(--fs-md);
+      color: var(--clr-muted);
+      margin-top: var(--sp-8);
+      max-width: 560px;
+      margin-inline: auto;
+      line-height: var(--lh-relaxed);
+    }
+
+    /* ── Featured Products ───────────────────────────────── */
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: var(--sp-10);
+      flex-wrap: wrap;
+      gap: var(--sp-4);
+    }
+
+    /* Product grid */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--sp-5);
+    }
+    @media (max-width: 1200px) { .products-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 900px)  { .products-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px)  { 
+      .products-grid { 
+        grid-template-columns: repeat(2, 1fr); 
+        gap: var(--sp-4); 
+        padding-inline: var(--sp-2);
+      } 
+    }
+
+    /* ── Category Grid ───────────────────────────────────── */
+    .category-grid-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 480px 360px;
+      gap: var(--sp-4);
+    }
+    .cat-item-1 {
+      grid-column: 1;
+      grid-row: 1;
+    }
+    .cat-item-2 {
+      grid-column: 2;
+      grid-row: 1 / 3;
+    }
+    .cat-item-3 {
+      grid-column: 3;
+      grid-row: 1;
+    }
+    .cat-item-4 {
+      grid-column: 1;
+      grid-row: 2;
+    }
+    .cat-item-5 {
+      grid-column: 3;
+      grid-row: 2;
+    }
+
+    @media (max-width: 900px) {
+      .category-grid-layout {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+      }
+      .cat-item-1, .cat-item-2, .cat-item-3, .cat-item-4, .cat-item-5 {
+        grid-column: auto;
+        grid-row: auto;
+        height: 300px;
+      }
+    }
+    @media (max-width: 560px) {
+      .category-grid-layout { grid-template-columns: 1fr; }
+      .cat-item-1, .cat-item-2, .cat-item-3, .cat-item-4, .cat-item-5 {
+        height: 260px;
+      }
+    }
+
+    /* ── Product Showcase ────────────────────────────────── */
+    .showcase {
+      background: var(--clr-surface);
+      overflow: hidden;
+    }
+    .showcase-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 680px;
+    }
+    .showcase-visual {
+      position: relative;
+      overflow: hidden;
+      background: var(--clr-surface-2);
+    }
+    .showcase-visual-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s ease;
+    }
+    .showcase:hover .showcase-visual-img {
+      transform: scale(1.04);
+    }
+    .showcase-badge {
+      position: absolute;
+      top: var(--sp-8);
+      left: var(--sp-8);
+      padding: var(--sp-2) var(--sp-5);
+      background: var(--clr-accent);
+      color: var(--clr-bg);
+      font-size: var(--fs-xs);
+      font-weight: var(--fw-black);
+      letter-spacing: var(--ls-widest);
+      text-transform: uppercase;
+      border-radius: var(--radius-sm);
+    }
+    .showcase-content {
+      padding: clamp(3rem, 5vw, 6rem);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .showcase-product-name {
+      font-size: clamp(2rem, 3.5vw, 3.5rem);
+      font-weight: var(--fw-black);
+      letter-spacing: var(--ls-tight);
+      line-height: 1.1;
+      text-transform: uppercase;
+      margin-block: var(--sp-4) var(--sp-6);
+    }
+    .showcase-tagline {
+      font-size: var(--fs-md);
+      color: var(--clr-muted);
+      line-height: var(--lh-relaxed);
+      margin-bottom: var(--sp-8);
+    }
+    .showcase-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-3);
+      margin-bottom: var(--sp-10);
+    }
+    .showcase-features li {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-3);
+      font-size: var(--fs-sm);
+      color: var(--clr-off-white);
+    }
+    .feature-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--clr-accent);
+      flex-shrink: 0;
+    }
+    .showcase-price {
+      font-size: var(--fs-2xl);
+      font-weight: var(--fw-black);
+      color: var(--clr-white);
+      margin-bottom: var(--sp-6);
+    }
+    @media (max-width: 768px) {
+      .showcase-inner { grid-template-columns: 1fr; }
+      .showcase-visual { min-height: 380px; }
+    }
+
+    /* ── Stats Section ───────────────────────────────────── */
+    .stats-section {
+      background: var(--clr-bg);
+      border-top: 1px solid var(--clr-border);
+      border-bottom: 1px solid var(--clr-border);
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .stat-item {
+      padding: var(--sp-12) var(--sp-8);
+      border-right: 1px solid var(--clr-border);
+    }
+    .stat-item:last-child { border-right: none; }
+    @media (max-width: 768px) {
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .stat-item:nth-child(2) { border-right: none; }
+      .stat-item:nth-child(1),
+      .stat-item:nth-child(2) { border-bottom: 1px solid var(--clr-border); }
+    }
+
+    /* ── Reviews ─────────────────────────────────────────── */
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-5);
+    }
+    @media (max-width: 900px) { .reviews-grid { grid-template-columns: 1fr; } }
+
+    /* ── Newsletter ──────────────────────────────────────── */
+    .email-capture {
+      background: var(--clr-accent);
+      padding: clamp(4rem, 8vw, 8rem) var(--gutter);
+      text-align: center;
+    }
+    .email-capture .section-eyebrow {
+      color: rgba(0,0,0,0.5);
+      justify-content: center;
+    }
+    .email-capture .section-eyebrow::before {
+      background: rgba(0,0,0,0.4);
+    }
+    .email-capture-title {
+      font-size: clamp(2rem, 5vw, 4.5rem);
+      font-weight: var(--fw-black);
+      letter-spacing: var(--ls-tight);
+      color: var(--clr-bg);
+      margin-block: var(--sp-4) var(--sp-3);
+      line-height: 1.05;
+    }
+    .email-capture-sub {
+      font-size: var(--fs-md);
+      color: rgba(0,0,0,0.55);
+      margin-bottom: var(--sp-10);
+    }
+    .email-capture-form {
+      max-width: 520px;
+      margin-inline: auto;
+    }
+    .email-capture .form-inline {
+      background: var(--clr-bg);
+      border-color: transparent;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.25);
+    }
+    .email-capture .form-inline .form-input {
+      background: transparent;
+      color: var(--clr-white);
+    }
+    .email-capture .form-inline .form-input::placeholder {
+      color: var(--clr-muted-2);
+    }
+    .email-capture .btn-primary {
+      background: var(--clr-accent);
+      color: var(--clr-bg);
+      border-color: var(--clr-accent);
+      border-radius: 0;
+    }
+    .email-capture .btn-primary:hover {
+      background: var(--clr-white);
+    }
+    .email-capture-note {
+      font-size: var(--fs-xs);
+      color: rgba(0,0,0,0.4);
+      margin-top: var(--sp-4);
+    }
+
+    /* ── Social Proof Header ─────────────────────────────── */
+    .social-proof-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: var(--sp-12);
+      flex-wrap: wrap;
+      gap: var(--sp-6);
+    }
+    .rating-summary {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-3);
+    }
+    .rating-number { font-size: var(--fs-4xl); font-weight: var(--fw-black); }
+    .rating-stars  { display: flex; flex-direction: column; }
+
+    /* ── Announcement top strip position ─────────────────── */
+    body { padding-top: 0; }
+    .layout-wrap {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    .main-content {
+      padding-top: 112px; /* announcement(40) + header(72) */
+    }
+    .hero.full-viewport {
+      margin-top: -112px;
+      padding-top: 112px;
+      height: 100vh;
+      max-height: 1080px;
+    }
+    @media (max-width: 768px) {
+      .main-content { padding-top: 112px; }
+    }
+
+    /* Logo & Nav styling moved to custom.css */
+
+    /* Loader: mark centred, larger */
+    .loader-logo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      font-size: 5rem;
+      font-weight: 900;
+      color: #0A0A0A;
+    }
+    .loader-mark {
+      display: none;
+    }
+
+    /* Hero watermark: subtle accent mark, cut off on edge */
+    .hero__logo-watermark {
+      position: absolute;
+      top: 40%;
+      right: -8%;
+      transform: translateY(-50%);
+      width: min(400px, 35vw);
+      height: min(400px, 35vw);
+      color: var(--clr-white);
+      opacity: 0.015;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* Mobile menu: mark top-left of overlay */
+    .mobile-menu-logo {
+      position: absolute;
+      top: var(--sp-8);
+      left: var(--gutter);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      opacity: 0;
+      transition: opacity 0.5s ease 0.1s;
+    }
+    .mobile-menu.open .mobile-menu-logo {
+      opacity: 1;
+    }
+    .mobile-menu-logo-mark {
+      width: 32px;
+      height: 32px;
+      color: var(--clr-accent);
+    }
+    .mobile-menu-logo-text {
+      font-size: 0.95rem;
+      font-weight: var(--fw-black);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--clr-white);
+    }
+
+    /* Footer: mark + wordmark in brand column */
+    .footer-brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: var(--sp-6);
+    }
+    .footer-brand-mark {
+      width: 64px;
+      height: 64px;
+      color: var(--clr-accent);
+      flex-shrink: 0;
+      margin-bottom: var(--sp-2);
+    }
+    .footer-brand-wordmark {
+      font-size: 1.25rem;
+      font-weight: var(--fw-black);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--clr-white);
+      line-height: 1;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── SVG Symbol Definitions (reused across the page) ──── -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none;" aria-hidden="true">
+  <symbol id="qawi-mark" viewBox="0 0 100 100">
+    <circle cx="50" cy="50" r="35" fill="none" stroke="currentColor" stroke-width="13"/>
+    <line x1="50" y1="50" x2="82" y2="82" stroke="currentColor" stroke-width="13" stroke-linecap="round"/>
+    <circle cx="50" cy="50" r="14" fill="currentColor"/>
+    <circle cx="82" cy="82" r="14" fill="currentColor"/>
+  </symbol>
+</svg>
+
+<!-- ── Page Loader ──────────────────────────────────────── -->
+<div id="page-loader" aria-hidden="true">
+  <div class="loader-logo">
+    <svg width="64" height="64" viewBox="0 0 100 100" class="fill-current overflow-visible">
+      <use href="#qawi-mark" />
+    </svg>
+  </div>
+</div>
+
+<!-- ── Cursor Glow ──────────────────────────────────────── -->
+<div id="cursor-glow" aria-hidden="true"></div>
+
+<!-- ── Cart Overlay ─────────────────────────────────────── -->
+<div class="cart-overlay" data-cart-close></div>
+
+<!-- ── Cart Drawer ──────────────────────────────────────── -->
+<aside class="cart-drawer" aria-label="Shopping cart" role="complementary">
+  <div class="cart-drawer__header">
+    <h2 class="cart-drawer__title">Your Cart</h2>
+    <button class="nav-icon-btn" data-cart-close aria-label="Close cart">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="cart-drawer__body">
+    <div class="cart-empty">
+      <div class="cart-empty-icon">🛒</div>
+      <p style="font-weight:600;margin-bottom:.5rem;color:var(--clr-off-white);">Your cart is empty</p>
+      <p style="font-size:var(--fs-sm);color:var(--clr-muted);margin-bottom:1.5rem;">Add something worthy of the work.</p>
+      <button class="btn btn-secondary btn-sm" data-cart-close>Continue Shopping</button>
+    </div>
+  </div>
+  <div class="cart-drawer__footer">
+    <div class="cart-subtotal">
+      <span class="cart-subtotal__label">Subtotal</span>
+      <span class="cart-subtotal__value">$0.00</span>
+    </div>
+    <button class="btn btn-primary btn-full">
+      <span class="btn-label">Checkout</span>
+      <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </button>
+    <p class="cart-note">Free shipping on orders over $75 · Taxes calculated at checkout</p>
+  </div>
+</aside>
+
+<!-- ── Mobile Menu ───────────────────────────────────────── -->
+<nav class="mobile-menu" aria-label="Mobile navigation">
+  <!-- Logo mark at top of overlay -->
+  <div class="mobile-menu-logo" aria-hidden="true">
+    <svg class="mobile-menu-logo-mark"><use href="#qawi-mark"/></svg>
+  </div>
+
+  <div class="mobile-menu-links">
+    <a href="#new-arrivals" style="--i:0">New Arrivals</a>
+    <a href="#shop" style="--i:1">Shop</a>
+    <a href="#performance" style="--i:2">Performance</a>
+    <a href="#collections" style="--i:3">Collections</a>
+    <a href="#about" style="--i:4">About</a>
+  </div>
+  <div class="mobile-menu-footer">
+    <p style="font-size:var(--fs-xs);color:var(--clr-muted-2);">© 2025 Qawi</p>
+    <button class="btn btn-primary btn-sm">Shop Now</button>
+  </div>
+</nav>
+
+<!-- ── Layout Wrap ───────────────────────────────────────── -->
+<div class="layout-wrap">
+
+  <!-- ── Announcement Bar ───────────────────────────────── -->
+  <div class="announcement-bar" role="banner" aria-label="Promotions">
+    <div class="ticker-wrapper">
+      <div class="ticker-track">
+        <span class="ticker-item">
+          BUILT FOR THE WORK. 7-DAY 100% REFUND POLICY. FREE SHIPPING OVER RS. 5,000
+          <span class="ticker-dot"></span>
+          BUILT FOR THE WORK. 7-DAY 100% REFUND POLICY. FREE SHIPPING OVER RS. 5,000
+          <span class="ticker-dot"></span>
+          BUILT FOR THE WORK. 7-DAY 100% REFUND POLICY. FREE SHIPPING OVER RS. 5,000
+          <span class="ticker-dot"></span>
+          BUILT FOR THE WORK. 7-DAY 100% REFUND POLICY. FREE SHIPPING OVER RS. 5,000
+          <span class="ticker-dot"></span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Header ────────────────────────────────────────── -->
+  <header class="site-header" id="site-header">
+    <a href="/" class="nav-logo" aria-label="Qawi Home">QAWI</a>
+
+    <nav class="nav-links" aria-label="Primary navigation">
+      <a href="#new-arrivals" class="header__menu-item" data-text="NEW ARRIVALS"><span>NEW ARRIVALS</span></a>
+      <a href="#shop" class="header__menu-item" data-text="SHOP"><span>SHOP</span></a>
+      <a href="#performance" class="header__menu-item" data-text="PERFORMANCE"><span>PERFORMANCE</span></a>
+      <a href="#collections" class="header__menu-item" data-text="COLLECTIONS"><span>COLLECTIONS</span></a>
+      <a href="#about" class="header__menu-item" data-text="ABOUT"><span>ABOUT</span></a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="nav-icon-btn" aria-label="Search">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <button class="nav-icon-btn" aria-label="Open cart" data-cart-open>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        <span class="cart-count" style="display:none;">0</span>
+      </button>
+      <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ── Main Content ──────────────────────────────────── -->
+  <main class="main-content" id="main">
+
+    <!-- ═══════════════════════════════════════════════════
+         HERO — FULL BLEED
+    ═══════════════════════════════════════════════════ -->
+    <section class="hero full-viewport" id="hero" aria-label="Hero">
+      <div class="hero-video">
+        <video autoplay muted loop playsinline preload="auto" class="hero-video-bg">
+          <source src="assets/hero-video.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="hero__content hero__content--minimal">
+        <div class="hero__actions">
+          <a href="#shop" class="button--primary button--large">SHOP NOW</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+         BRAND STATEMENT
+    ═══════════════════════════════════════════════════ -->
+    <section class="brand-statement" id="about" aria-label="Brand statement">
+      <p class="statement-pre reveal">The Qawi Standard</p>
+      <h2 class="statement-text reveal delay-1">
+        Precision is not a feature —<br />
+        it's the <span class="highlight">foundation</span> of<br />
+        <span class="ghost">everything we build.</span>
+      </h2>
+      <p class="statement-sub reveal delay-2">
+        Every fabric, every cut, every seam is engineered with intention. We don't follow trends. We build performance.
+      </p>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+         NEW ARRIVALS — FEATURED PRODUCTS
+    ═══════════════════════════════════════════════════ -->
+    <section class="section" id="new-arrivals" aria-label="New Arrivals">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="section-eyebrow reveal">Drop 01</p>
+            <h2 class="section-title reveal delay-1">New Arrivals</h2>
+          </div>
+          <a href="#shop" class="btn btn-secondary reveal delay-2">View All
+            <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+
+        <div class="products-grid">
+          <!-- Product 1 -->
+          <div class="product-card hover-lift reveal delay-1">
+            <div class="product-card__img-wrap">
+              <div class="product-card__badge badge--new">New</div>
+              <div style="width:100%;height:100%;background:linear-gradient(160deg,#1a1a1a 0%,#111 50%,#0d0d0d 100%);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:24px;">
+                <div style="width:90px;height:90px;border-radius:50%;background:radial-gradient(circle,rgba(200,255,0,0.1),rgba(200,255,0,0.02));border:1px solid rgba(200,255,0,0.12);display:flex;align-items:center;justify-content:center;">
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="rgba(200,255,0,0.6)" stroke-width="1.2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+                </div>
+                <span style="font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(200,255,0,0.3);font-weight:700;">Pro Shorts</span>
+              </div>
+              <div class="product-card__quick-add" role="button" tabindex="0">Add to Cart — $52</div>
+            </div>
+            <div class="product-card__info">
+              <p class="product-card__name">Qawi Pro Shorts 5"</p>
+              <p class="product-card__subtitle">Built-in liner · 4-way stretch</p>
+              <div class="product-card__price">
+                <span class="price-current">$52</span>
+              </div>
+              <div class="product-card__swatches">
+                <button class="swatch active" style="background:#0a0a0a;border-color:var(--clr-white)" aria-label="Black"></button>
+                <button class="swatch" style="background:#2a2a2a" aria-label="Charcoal"></button>
+                <button class="swatch" style="background:#C8FF00" aria-label="Lime"></button>
+                <button class="swatch" style="background:#1a2840" aria-label="Navy"></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 2 -->
+          <div class="product-card hover-lift reveal delay-2">
+            <div class="product-card__img-wrap">
+              <div class="product-card__badge badge--new">New</div>
+              <div style="width:100%;height:100%;background:linear-gradient(160deg,#1c1c1c 0%,#141414 50%,#0e0e0e 100%);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:24px;">
+                <div style="width:90px;height:90px;border-radius:50%;background:radial-gradient(circle,rgba(200,255,0,0.08),rgba(200,255,0,0.02));border:1px solid rgba(200,255,0,0.1);display:flex;align-items:center;justify-content:center;">
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="rgba(200,255,0,0.5)" stroke-width="1.2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                </div>
+                <span style="font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(200,255,0,0.3);font-weight:700;">Compression Top</span>
+              </div>
+              <div class="product-card__quick-add" role="button" tabindex="0">Add to Cart — $68</div>
+            </div>
+            <div class="product-card__info">
+              <p class="product-card__name">Apex Compression Top</p>
+              <p class="product-card__subtitle">Muscle-mapping · Anti-odor tech</p>
+              <div class="product-card__price">
+                <span class="price-current">$68</span>
+              </div>
+              <div class="product-card__swatches">
+                <button class="swatch active" style="background:#0a0a0a;border-color:var(--clr-white)" aria-label="Black"></button>
+                <button class="swatch" style="background:#3a3a3a" aria-label="Graphite"></button>
+                <button class="swatch" style="background:#C8FF00" aria-label="Lime"></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 3 -->
+          <div class="product-card hover-lift reveal delay-3">
+            <div class="product-card__img-wrap">
+              <div class="product-card__badge badge--sale">-25%</div>
+              <div style="width:100%;height:100%;background:linear-gradient(160deg,#181818 0%,#111 50%,#0c0c0c 100%);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:24px;">
+                <div style="width:90px;height:90px;border-radius:50%;background:radial-gradient(circle,rgba(200,255,0,0.08),rgba(200,255,0,0.02));border:1px solid rgba(200,255,0,0.1);display:flex;align-items:center;justify-content:center;">
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="rgba(200,255,0,0.5)" stroke-width="1.2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                </div>
+                <span style="font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(200,255,0,0.3);font-weight:700;">Training Tank</span>
+              </div>
+              <div class="product-card__quick-add" role="button" tabindex="0">Add to Cart — $44</div>
+            </div>
+            <div class="product-card__info">
+              <p class="product-card__name">Strike Training Tank</p>
+              <p class="product-card__subtitle">Oversized fit · Sweat-wicking</p>
+              <div class="product-card__price">
+                <span class="price-current">$44</span>
+                <span class="price-original">$58</span>
+                <span class="price-discount">-25%</span>
+              </div>
+              <div class="product-card__swatches">
+                <button class="swatch active" style="background:#0a0a0a;border-color:var(--clr-white)" aria-label="Black"></button>
+                <button class="swatch" style="background:#f0f0f0;border-color:var(--clr-border)" aria-label="White"></button>
+                <button class="swatch" style="background:#C8FF00" aria-label="Lime"></button>
+                <button class="swatch" style="background:#3a1a0a" aria-label="Rust"></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 4 -->
+          <div class="product-card hover-lift reveal delay-4">
+            <div class="product-card__img-wrap">
+              <div class="product-card__badge badge--new">New</div>
+              <div style="width:100%;height:100%;background:linear-gradient(160deg,#1a1a1a 0%,#121212 50%,#0e0e0e 100%);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:24px;">
+                <div style="width:90px;height:90px;border-radius:50%;background:radial-gradient(circle,rgba(200,255,0,0.1),rgba(200,255,0,0.02));border:1px solid rgba(200,255,0,0.12);display:flex;align-items:center;justify-content:center;">
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="rgba(200,255,0,0.6)" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><line x1="14.31" y1="8" x2="20.05" y2="17.94"/><line x1="9.69" y1="8" x2="21.17" y2="8"/><line x1="7.38" y1="12" x2="13.12" y2="2.06"/><line x1="9.69" y1="16" x2="3.95" y2="6.06"/><line x1="14.31" y1="16" x2="2.83" y2="16"/><line x1="16.62" y1="12" x2="10.88" y2="21.94"/></svg>
+                </div>
+                <span style="font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(200,255,0,0.3);font-weight:700;">Shorts Set</span>
+              </div>
+              <div class="product-card__quick-add" role="button" tabindex="0">Add to Cart — $89</div>
+            </div>
+            <div class="product-card__info">
+              <p class="product-card__name">Elite Shorts & Top Set</p>
+              <p class="product-card__subtitle">Matching set · Limited edition</p>
+              <div class="product-card__price">
+                <span class="price-current">$89</span>
+                <span class="price-original">$120</span>
+                <span class="price-discount">-26%</span>
+              </div>
+              <div class="product-card__swatches">
+                <button class="swatch active" style="background:#0a0a0a;border-color:var(--clr-white)" aria-label="Black"></button>
+                <button class="swatch" style="background:#C8FF00" aria-label="Lime"></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+         STATS — SOCIAL PROOF NUMBERS
+    ═══════════════════════════════════════════════════ -->
+    <div class="stats-section" id="stats" aria-label="Brand statistics">
+      <div class="stats-grid container container--wide">
+        <div class="stat-item reveal">
+          <div class="stat-number"><span data-count="48000" data-suffix="+">0</span></div>
+          <div class="stat-label">Orders Shipped</div>
+        </div>
+        <div class="stat-item reveal delay-1">
+          <div class="stat-number"><span class="stat-accent">4</span>.<span data-count="9" data-prefix="">0</span><span class="stat-accent" style="font-size:2.5rem;vertical-align:top;margin-top:.5rem;">★</span></div>
+          <div class="stat-label">Average Rating</div>
+        </div>
+        <div class="stat-item reveal delay-2">
+          <div class="stat-number"><span data-count="58" data-suffix="+">0</span></div>
+          <div class="stat-label">Countries Reached</div>
+        </div>
+        <div class="stat-item reveal delay-3">
+          <div class="stat-number"><span data-count="100" data-suffix="%">0</span></div>
+          <div class="stat-label">Premium Materials</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════
+         CATEGORY GRID — SHOP BY CATEGORY
+    ═══════════════════════════════════════════════════ -->
+    <section class="section" id="collections" aria-label="Shop by category">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="section-eyebrow reveal">The Range</p>
+            <h2 class="section-title reveal delay-1">Shop by Category</h2>
+          </div>
+        </div>
+
+        <div class="category-grid-layout">
+          <!-- Cat 1: Tops -->
+          <div class="category-card cat-item-1 reveal" style="background:var(--clr-surface);">
+            <div class="category-card__inner">
+              <div style="width:100%;height:100%;background:linear-gradient(135deg,#131313 0%,#1a1a1a 100%);display:flex;align-items:center;justify-content:center;">
+                <svg width="80" height="80" viewBox="0 0 100 100" fill="none" style="opacity:0.07;" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10 20 L30 10 L50 25 L70 10 L90 20 L80 50 L70 50 L70 90 L30 90 L30 50 L20 50 Z" stroke="#C8FF00" stroke-width="2" fill="rgba(200,255,0,0.1)"/>
+                </svg>
+              </div>
+              <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(200,255,0,0.04),transparent);"></div>
+              <div class="category-card__overlay"></div>
+              <div class="category-card__label">
+                <h3 class="category-card__name">Tops</h3>
+                <span class="category-card__link">
+                  Explore
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cat 2: Collections (tall center) -->
+          <div class="category-card cat-item-2 reveal delay-1" style="background:var(--clr-surface-2);">
+            <div class="category-card__inner" style="height:100%;">
+              <div style="width:100%;height:100%;background:linear-gradient(160deg,#0f1a0f 0%,#0a150a 40%,#080808 100%);display:flex;align-items:center;justify-content:center;">
+                <div style="text-align:center;opacity:0.15;">
+                  <div style="font-size:8rem;font-weight:900;letter-spacing:-0.04em;color:#C8FF00;line-height:1;">Q</div>
+                  <div style="width:60px;height:2px;background:#C8FF00;margin:8px auto;"></div>
+                </div>
+              </div>
+              <div style="position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(200,255,0,0.06) 0%,transparent 70%);"></div>
+              <div class="category-card__overlay" style="background:linear-gradient(to top,rgba(0,0,0,0.85) 0%,rgba(0,0,0,0.1) 40%,transparent 70%);"></div>
+              <div class="category-card__label">
+                <p style="font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;color:var(--clr-accent);margin-bottom:.5rem;font-weight:700;">Featured Drop</p>
+                <h3 class="category-card__name" style="font-size:clamp(1.8rem,3vw,2.8rem);">Precision<br/>Series</h3>
+                <span class="category-card__link">
+                  Shop the Drop
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cat 3: Shorts -->
+          <div class="category-card cat-item-3 reveal delay-2" style="background:var(--clr-surface);">
+            <div class="category-card__inner">
+              <div style="width:100%;height:100%;background:linear-gradient(135deg,#141414 0%,#1c1c1c 100%);display:flex;align-items:center;justify-content:center;">
+                <svg width="80" height="80" viewBox="0 0 100 100" fill="none" style="opacity:0.07;" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M20 10 L80 10 L90 50 L65 90 L35 90 L10 50 Z" stroke="#C8FF00" stroke-width="2" fill="rgba(200,255,0,0.1)"/>
+                </svg>
+              </div>
+              <div class="category-card__overlay"></div>
+              <div class="category-card__label">
+                <h3 class="category-card__name">Shorts</h3>
+                <span class="category-card__link">
+                  Explore
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cat 4: Accessories -->
+          <div class="category-card cat-item-4 reveal delay-3" style="background:var(--clr-surface);">
+            <div class="category-card__inner">
+              <div style="width:100%;height:100%;background:linear-gradient(135deg,#111 0%,#181818 100%);display:flex;align-items:center;justify-content:center;">
+                <div style="opacity:0.07;font-size:4rem;color:#C8FF00;">⬡</div>
+              </div>
+              <div class="category-card__overlay"></div>
+              <div class="category-card__label">
+                <h3 class="category-card__name">Accessories</h3>
+                <span class="category-card__link">
+                  Explore
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cat 5: Womens -->
+          <div class="category-card cat-item-5 reveal delay-4" style="background:var(--clr-surface);">
+            <div class="category-card__inner">
+              <div style="width:100%;height:100%;background:linear-gradient(135deg,#121212 0%,#1a1a1a 100%);display:flex;align-items:center;justify-content:center;">
+                <div style="opacity:0.07;font-size:4rem;color:#C8FF00;">◈</div>
+              </div>
+              <div class="category-card__overlay"></div>
+              <div class="category-card__label">
+                <h3 class="category-card__name">Women's</h3>
+                <span class="category-card__link">
+                  Explore
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+         PRODUCT SHOWCASE — HERO PRODUCT
+    ═══════════════════════════════════════════════════ -->
+    <section class="showcase" id="performance" aria-label="Featured product">
+      <div class="showcase-inner">
+        <div class="showcase-visual">
+          <div style="width:100%;height:100%;background:linear-gradient(160deg,#0d150d 0%,#0a0a0a 40%,#111811 100%);display:flex;align-items:center;justify-content:center;position:relative;">
+            <!-- Accent glow -->
+            <div style="position:absolute;width:60%;height:60%;background:radial-gradient(circle,rgba(200,255,0,0.08),transparent 70%);border-radius:50%;"></div>
+            <!-- Product art -->
+            <div style="position:relative;z-index:1;text-align:center;">
+              <div style="width:180px;height:240px;background:linear-gradient(160deg,#1a1a1a,#0d0d0d);border-radius:12px;border:1px solid rgba(200,255,0,0.12);margin:0 auto;display:flex;align-items:center;justify-content:center;position:relative;box-shadow:0 20px 80px rgba(0,0,0,0.8);">
+                <div style="width:2px;height:80%;background:linear-gradient(to bottom,transparent,rgba(200,255,0,0.3),transparent);position:absolute;right:20px;"></div>
+                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="rgba(200,255,0,0.4)" stroke-width="1"><circle cx="12" cy="7" r="4"/><path d="M12 11c-5 0-8 2.5-8 5v1h16v-1c0-2.5-3-5-8-5z"/></svg>
+              </div>
+              <div style="position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);background:var(--clr-accent);color:var(--clr-bg);padding:4px 16px;border-radius:4px;font-size:.65rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;white-space:nowrap;">Drop 01 · Limited</div>
+            </div>
+          </div>
+          <div class="showcase-badge">Hero Product</div>
+        </div>
+
+        <div class="showcase-content">
+          <p class="section-eyebrow reveal">The Piece Everyone Needs</p>
+          <h2 class="showcase-product-name reveal delay-1">Phantom<br/>Compression<br/>Shorts</h2>
+          <p class="showcase-tagline reveal delay-2">
+            Developed over 18 months with athletes and material scientists. The most wearable, breathable, performance-ready short we've ever built.
+          </p>
+          <ul class="showcase-features reveal delay-3">
+            <li><span class="feature-dot"></span>4-way stretch proprietary fabric</li>
+            <li><span class="feature-dot"></span>Seamless inner liner — no chafe</li>
+            <li><span class="feature-dot"></span>Anti-odor silver-ion technology</li>
+            <li><span class="feature-dot"></span>Deep side pockets (phone-ready)</li>
+            <li><span class="feature-dot"></span>Machine wash — retains shape</li>
+          </ul>
+          <div class="showcase-price reveal delay-4">$79</div>
+          <div class="flex gap-4 reveal delay-5">
+            <button class="btn btn-primary btn-lg" onclick="addToCart('Phantom Compression Shorts', '$79', null)">
+              <span class="btn-label">Add to Cart</span>
+              <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+            <button class="btn btn-secondary btn-lg">Size Guide</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+         SOCIAL PROOF — REVIEWS
+    ═══════════════════════════════════════════════════ -->
+    <section class="section" id="reviews" aria-label="Customer reviews">
+      <div class="container">
+        <div class="social-proof-header">
+          <div>
+            <p class="section-eyebrow reveal">Real Athletes. Real Results.</p>
+            <h2 class="section-title reveal delay-1">What They're Saying</h2>
+          </div>
+          <div class="rating-summary reveal delay-2">
+            <div class="rating-number">4.9</div>
+            <div class="rating-stars">
+              <div class="review-stars">
+                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+              </div>
+              <span style="font-size:var(--fs-xs);color:var(--clr-muted);">Based on 1,240+ reviews</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="reviews-grid">
+          <div class="review-card reveal delay-1">
+            <div class="review-stars">
+              <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+            </div>
+            <p class="review-text">"These shorts are an absolute game-changer. I've trained in every major brand — Qawi is in a different league. The compression without restriction feeling is something else entirely."</p>
+            <div class="review-author">
+              <div class="review-avatar">AK</div>
+              <div>
+                <div class="review-name">Ahmad K.</div>
+                <div class="review-verified">Verified Buyer · Dubai, UAE</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="review-card reveal delay-2">
+            <div class="review-stars">
+              <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+            </div>
+            <p class="review-text">"Finally found gym wear that doesn't look like it's trying too hard. Clean, minimal, premium — exactly what a serious athlete needs. The quality speaks for itself."</p>
+            <div class="review-author">
+              <div class="review-avatar">MR</div>
+              <div>
+                <div class="review-name">Marcus R.</div>
+                <div class="review-verified">Verified Buyer · London, UK</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="review-card reveal delay-3">
+            <div class="review-stars">
+              <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+            </div>
+            <p class="review-text">"Ordered 3 sets in one go. The material doesn't stretch out or fade after washing — kept its exact shape after 6 months of daily training. Worth every penny."</p>
+            <div class="review-author">
+              <div class="review-avatar">JL</div>
+              <div>
+                <div class="review-name">James L.</div>
+                <div class="review-verified">Verified Buyer · Sydney, AUS</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+         EMAIL CAPTURE — NEWSLETTER
+    ═══════════════════════════════════════════════════ -->
+    <section class="email-capture" id="newsletter" aria-label="Newsletter signup">
+      <p class="section-eyebrow">Early Access</p>
+      <h2 class="email-capture-title">
+        Be the first<br/>to know.
+      </h2>
+      <p class="email-capture-sub">New drops. Training guides. Members-only offers.</p>
+      <div class="email-capture-form">
+        <form class="form-inline newsletter-form" aria-label="Newsletter signup form">
+          <input
+            type="email"
+            id="newsletter-email"
+            class="form-input"
+            placeholder="Enter your email"
+            required
+            aria-label="Email address"
+            autocomplete="email"
+          />
+          <button type="submit" class="btn btn-primary">
+            <span class="btn-label">Join</span>
+          </button>
+        </form>
+      </div>
+      <p class="email-capture-note">No spam. Unsubscribe anytime. We respect your privacy.</p>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════════════ -->
+  <footer class="site-footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Brand col -->
+        <div>
+          <div class="footer-brand-logo">
+            <svg class="footer-brand-mark" aria-hidden="true"><use href="#qawi-mark"/></svg>
+          </div>
+          <p class="footer-brand-tagline">
+            Performance wear engineered for athletes who demand precision, durability, and uncompromising quality.
+          </p>
+          <div class="footer-socials">
+            <a href="#" class="social-link" aria-label="Instagram">IG</a>
+            <a href="#" class="social-link" aria-label="TikTok">TK</a>
+            <a href="#" class="social-link" aria-label="YouTube">YT</a>
+            <a href="#" class="social-link" aria-label="Twitter/X">X</a>
+          </div>
+        </div>
+        <!-- Shop col -->
+        <div>
+          <h3 class="footer-col-title">Shop</h3>
+          <ul class="footer-links">
+            <li><a href="#new-arrivals">New Arrivals</a></li>
+            <li><a href="#collections">Tops</a></li>
+            <li><a href="#collections">Shorts</a></li>
+            <li><a href="#collections">Women's</a></li>
+            <li><a href="#collections">Accessories</a></li>
+            <li><a href="#collections">Sale</a></li>
+          </ul>
+        </div>
+        <!-- Company col -->
+        <div>
+          <h3 class="footer-col-title">Company</h3>
+          <ul class="footer-links">
+            <li><a href="#about">Our Story</a></li>
+            <li><a href="#">Athletes</a></li>
+            <li><a href="#">Sustainability</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Press</a></li>
+          </ul>
+        </div>
+        <!-- Support col -->
+        <div>
+          <h3 class="footer-col-title">Support</h3>
+          <ul class="footer-links">
+            <li><a href="#">Sizing Guide</a></li>
+            <li><a href="#">Shipping Info</a></li>
+            <li><a href="#">Returns</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2025 Qawi. All rights reserved. Built for the work.</p>
+        <div class="payment-icons" aria-label="Accepted payment methods">
+          <span class="payment-icon">VISA</span>
+          <span class="payment-icon">MC</span>
+          <span class="payment-icon">AMEX</span>
+          <span class="payment-icon">PAYPAL</span>
+          <span class="payment-icon">APPLE</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</div><!-- end layout-wrap -->
+
+<script src="assets/main.js" defer></script>
+</body>
+</html>

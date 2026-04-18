@@ -1,0 +1,416 @@
+/* ============================================================
+   QAWI — CLINICAL MONOCHROME OVERRIDES
+   Goal: Space over noise. Pure White & Absolute Black.
+   ============================================================ */
+
+/* --------------------------------------------------------------
+   GLOBAL INVERSIONS (Light Mode)
+   -------------------------------------------------------------- */
+:root {
+  --clr-bg:          #FFFFFF;
+  --clr-surface:     #FFFFFF;
+  --clr-surface-2:   #FFFFFF;
+  --clr-border:      #E5E5E5;
+  --clr-accent:      #000000;
+  --clr-accent-dim:  #333333;
+  --clr-white:       #0A0A0A; /* Variables named 'white' are now black */
+  --clr-off-white:   #1A1A1A;
+  --clr-muted:       #666666;
+  --clr-muted-2:     #888888;
+  --clr-overlay:     rgba(255, 255, 255, 0.95);
+  
+  --shadow-accent:   none;
+  --radius-sm:  0px;
+  --radius-md:  0px;
+  --radius-lg:  0px;
+  --radius-full: 0px;
+  
+  --font-primary: 'Inter', Helvetica, Arial, sans-serif;
+}
+
+body {
+  background-color: #FFFFFF !important;
+  color: #0A0A0A !important;
+  background-image: radial-gradient(circle at 25% 25%, rgba(0,0,0,0.01) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Force backgrounds */
+section, header, footer, .hero, .hero__bg, .brand-statement, .showcase, .stats-section, .email-capture, .announcement-bar {
+  background: #FFFFFF !important;
+}
+
+/* Remove gradient noise from Hero */
+.hero__bg::after, .hero__athlete, .hero__shapes {
+  display: none !important;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6, .hero__title, .statement-text, .showcase-product-name, .email-capture-title {
+  color: #0A0A0A !important;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+}
+
+.statement-text .ghost {
+  -webkit-text-stroke: 1px rgba(0,0,0,0.15) !important;
+  color: transparent !important;
+}
+
+/* --------------------------------------------------------------
+   BUTTONS
+   -------------------------------------------------------------- */
+.btn, button, input[type="submit"] {
+  background-color: #CCFF00 !important;
+  color: #0A0A0A !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: opacity 0.2s ease !important;
+}
+
+.btn:hover, button:hover {
+  opacity: 0.8 !important;
+  background-color: #CCFF00 !important;
+  color: #0A0A0A !important;
+  transform: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+.btn-secondary {
+  background-color: transparent !important;
+  color: #0A0A0A !important;
+  border: 1px solid #0A0A0A !important;
+}
+
+.btn-secondary:hover {
+  background-color: transparent !important;
+  opacity: 0.8 !important;
+}
+
+/* --------------------------------------------------------------
+   BORDERS / DIVIDERS
+   -------------------------------------------------------------- */
+hr, .divider, .stats-section, .stat-item, .category-grid-layout > div, .product-card {
+  border-color: #E5E5E5 !important;
+}
+
+.stats-grid, .stats-section {
+  border-top: 1px solid #E5E5E5;
+  border-bottom: 1px solid #E5E5E5;
+}
+
+.stat-item {
+  border-right: 1px solid #E5E5E5;
+}
+
+/* --------------------------------------------------------------
+   SALE BADGES
+   -------------------------------------------------------------- */
+.badge--sale, .product-badge, .showcase-badge {
+  background-color: #FFFFFF !important;
+  color: #000000 !important;
+  border: 1px solid #000000 !important;
+  border-radius: 0 !important;
+  padding: 4px 8px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* --------------------------------------------------------------
+   TYPOGRAPHY
+   -------------------------------------------------------------- */
+.hero__eyebrow, .statement-pre, .hero__desc, .statement-sub, .showcase-tagline, .email-capture-sub {
+  color: #333333 !important;
+}
+
+.hero__desc {
+  max-width: 480px;
+  margin-bottom: 40px; /* Space before buttons */
+  font-size: 18px !important;
+  line-height: 1.6 !important;
+  color: #333333 !important;
+}
+
+/* --------------------------------------------------------------
+   HEADER & NAVIGATION
+   -------------------------------------------------------------- */
+.site-header {
+  background-color: #FFFFFF !important;
+  border-bottom: 1px solid #E5E5E5;
+  position: absolute !important; /* No sticky header */
+  top: 40px !important;
+  transform: none !important;
+}
+
+/* Remove scroll transitions for header */
+body.scroll-down .site-header,
+body.scroll-up .site-header {
+  transform: none !important;
+  position: absolute !important;
+}
+
+.nav-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 32px;
+  color: #0A0A0A !important;
+  letter-spacing: 4px;
+  text-decoration: none;
+  font-weight: 900;
+  position: fixed; /* Fix to top-left of viewport as requested */
+  top: 24px;
+  left: 24px;
+  z-index: 2000; /* Ensure it stays on top of video and content */
+}
+
+.nav-logo-mark {
+  display: none !important;
+}
+
+.nav-links {
+  display: flex !important;
+  gap: 32px !important;
+  align-items: center;
+}
+
+.header__menu-item {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #0A0A0A !important;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.header__menu-item:hover {
+  opacity: 0.7;
+}
+
+.header__inline-menu {
+  gap: 40px;
+}
+
+.nav-icon-btn, .hamburger-line {
+  color: #0A0A0A !important;
+  background-color: #0A0A0A !important;
+}
+
+.nav-icon-btn { background-color: transparent !important; }
+.nav-icon-btn svg { stroke: #0A0A0A !important; }
+
+/* --------------------------------------------------------------
+   CLEANUP & NOISE REMOVAL
+   -------------------------------------------------------------- */
+*, *::before, *::after {
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+.announcement-bar {
+  background: #0A0A0A !important;
+  color: #FFFFFF !important;
+}
+
+.free-shipping-bar .fill {
+  background: #CCFF00 !important;
+}
+
+.email-capture .form-inline {
+  border: 1px solid #E5E5E5 !important;
+}
+
+.email-capture .form-input {
+  color: #0A0A0A !important;
+}
+
+.email-capture .form-input::placeholder {
+  color: #888888 !important;
+}
+
+.cart-drawer {
+  background: #FFFFFF !important;
+  border-left: 1px solid #E5E5E5;
+}
+
+.cart-drawer__header h2, .cart-subtotal__label, .cart-subtotal__value {
+  color: #0A0A0A !important;
+}
+
+.mobile-menu {
+  background: #FFFFFF !important;
+}
+
+.mobile-menu-links a, .mobile-menu-logo-text {
+  color: #0A0A0A !important;
+}
+
+/* --------------------------------------------------------------
+   HERO IMPROVEMENTS
+   -------------------------------------------------------------- */
+.hero {
+  align-items: center !important; /* Center vertically but content is left aligned */
+}
+
+.hero__content {
+  text-align: left !important;
+  align-items: flex-start !important;
+  padding: 80px 0 120px; 
+}
+
+.hero__content--minimal {
+  position: absolute;
+  top: 65%; /* Positioned slightly lower than center */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center !important;
+  width: 100%;
+  display: flex !important;
+  flex-direction: column;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+}
+
+.hero__title {
+  text-align: left !important;
+  line-height: 0.9 !important; /* Tighten the stacked headline */
+  letter-spacing: -0.04em !important;
+  font-family: var(--font-headlines);
+  font-size: 80px;
+  color: #0A0A0A;
+  font-weight: 900;
+  margin-bottom: 16px;
+}
+
+.hero__title-accent {
+  font-family: var(--font-headlines);
+  font-size: 64px;
+  color: #0A0A0A;
+  font-weight: 600;
+}
+
+.hero__scroll, .scroll-line, .hero__logo-watermark {
+  display: none !important;
+}
+
+.hero-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(10rem, 35vw, 45rem);
+  color: #0A0A0A;
+  opacity: 0.03; /* Extremely faint per request */
+  z-index: 0;
+  pointer-events: none;
+  font-weight: 900;
+  white-space: nowrap;
+  letter-spacing: 0.1em;
+}
+
+/* Mobile Stacking */
+@media (max-width: 768px) {
+  .hero__actions {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    width: 100%;
+    gap: 1.5rem !important;
+    margin-top: 2rem !important;
+  }
+  .hero__actions .button--primary, 
+  .hero__actions .button--secondary {
+    width: 100% !important;
+    text-align: center !important;
+    display: block !important;
+  }
+  .hero__actions .button--secondary {
+    border-bottom: 2px solid #0A0A0A !important;
+    text-align: left !important; /* per latest request: OUR STORY aligns left */
+    width: fit-content !important;
+    margin-top: 2rem !important;
+  }
+}
+
+.button--primary {
+  background: #0A0A0A !important;
+  color: #FFFFFF !important;
+  padding: 16px 36px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 14px;
+  letter-spacing: 2px;
+  border: none !important;
+  text-decoration: none;
+  display: inline-block;
+  transition: opacity 0.2s;
+  border-radius: 0 !important;
+}
+
+.button--primary:hover {
+  opacity: 0.8;
+}
+
+.button--large {
+  padding: 24px 64px !important;
+  font-size: 18px !important;
+  letter-spacing: 4px !important;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3) !important; /* Premium depth */
+}
+
+.button--secondary {
+  background: transparent !important;
+  color: #0A0A0A !important;
+  padding: 16px 0;
+  margin-left: 32px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  border-bottom: 2px solid #0A0A0A !important;
+  text-decoration: none;
+  display: inline-block;
+  transition: opacity 0.2s;
+}
+
+.button--secondary:hover {
+  opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+  .button--secondary {
+    margin-left: 0 !important;
+    margin-top: 16px;
+    align-self: flex-start;
+  }
+}
+
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.hero-video-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-video::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  z-index: 1;
+}

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{{ shop.name }}</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  {{ content_for_header }}
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --font-headlines: 'Bebas Neue', sans-serif;
+      --font-body: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+<body class="{{ template }}">
+  <!-- Announcement Bar -->
+  <div class="announcement-bar" style="background: {{ settings.announcement_bg }}; color: {{ settings.announcement_text_color }}; text-align: center; font-size: 12px; letter-spacing: 2px; padding: 8px 0;">
+    {{ settings.announcement_text }}
+  </div>
+
+  <!-- Header with background image -->
+  <header class="site-header" style="position: sticky; top: 0; z-index: 1000;">
+    <div class="header-bg" style="background-image: url('{{ 'header-bg-placeholder.webp' | asset_url }}'); background-size: cover; background-position: center; height: 600px; position: relative;">
+      <div class="header-overlay" style="position: absolute; inset: 0; background: rgba(0,0,0,0.6);"></div>
+      <div class="header-content" style="position: relative; display: flex; align-items: center; justify-content: space-between; max-width: 1200px; margin: 0 auto; height: 100%; padding: 0 24px;">
+        <div class="logo">
+          <a href="/" style="font-family: var(--font-headlines); font-size: 32px; color: #CCFF00; text-transform: uppercase; text-decoration: none;">QAWI</a>
+        </div>
+        <nav class="nav-links" style="display: flex; gap: 24px; align-items: center;">
+          <a href="/collections/men" style="color: #FFFFFF; text-decoration: none; font-family: var(--font-body);">Men</a>
+          <a href="/collections/women" style="color: #FFFFFF; text-decoration: none; font-family: var(--font-body);">Women</a>
+          <a href="/collections/heavyweight" style="color: #FFFFFF; text-decoration: none; font-family: var(--font-body);">Heavyweight</a>
+        </nav>
+        <div class="header-icons" style="display: flex; gap: 16px; align-items: center;">
+          <a href="/account" aria-label="Account" style="color: #FFFFFF;">{{ 'account.svg' | asset_url | img_tag }}</a>
+          <a href="/cart" aria-label="Cart" style="color: #FFFFFF;">{{ 'cart.svg' | asset_url | img_tag }}</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  {{ content_for_layout }}
+
+  {{ content_for_footer }}
+</body>
+</html>
